@@ -7,7 +7,10 @@ export interface ProductCardProps {
     product: Product,
     children?: ReactElement | ReactElement[],
     className?: string,
-    style?: CSSProperties
+    style?: CSSProperties,
+    onChange?: (args:OnChangesArgs)=> void,
+    value?: number
+
   }
   
 export interface Product {
@@ -26,6 +29,10 @@ export interface Product {
     increaseBy: (value: number) => void,
     product: Product
   
+  }
+
+  export interface OnChangesArgs {
+    product:Product,count:number
   }
 
 
