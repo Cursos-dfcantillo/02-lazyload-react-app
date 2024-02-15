@@ -1,59 +1,41 @@
 import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components"
 import '../styles/custom-styles.css';
 import { products } from "../data/products";
-import { useShoppingCart } from "../hooks";
 
 
 
+const product = products[0];
 
 
 export const ShoppingPages = () => {
-  
-  const {shoppingCart,onProductCountChange} = useShoppingCart();
+
 
 
   return (
     <div className="">
       <h1>Shopping store</h1>
       <hr />
-      <div style={{
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap"
-      }}>
 
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} className="bg-dark text-bold"
-            onChange={onProductCountChange} value={shoppingCart[product.id]?.count || 0}>
-            <ProductImage className="custom-image" />
-            <ProductTitle className="text-white" />
-            <ProductButtons className="custom-button" />
-          </ProductCard>
-        ))}
-      </div>
+      <ProductCard key={product.id} product={product} className="bg-dark text-bold"
+        initialValues={{
+          count: 2,
+          maxCount: 10
+        }}
+      >
+        {({reset,count,isMaxCountReached,increaseBy}) => (<>
+          <ProductImage className="custom-image" />
+          <ProductTitle className="text-white" />
+          <ProductButtons className="custom-button" />
 
-      <div className="shopping-cart">
-        {Object.entries(shoppingCart).map(([key, product]) => (
-          <ProductCard key={key} style={{ width: "100px" }}
-            product={product} className="bg-dark text-bold" onChange={onProductCountChange} value={product.count}>
-            <ProductImage className="custom-image" />
-            <ProductButtons className="custom-button" style={{ display: "flex", justifyContent: "center" }} />
-          </ProductCard>
+          <button onClick={reset}>Reset</button>
+          {count>0 && <button onClick={()=>increaseBy(-2)}>-2</button>}
+          {!isMaxCountReached && <button onClick={()=>increaseBy(2)}>+2</button>}
+          <span style={{color:"white"}}>{count}</span>
 
-        ))}
-        {/* {products.map(prod => {
-          if (shoppingCart[prod.id]) {
-            return <ProductCard key={prod.id} style={{ width: "100px" }}
-              product={shoppingCart[prod.id]} className="bg-dark text-bold" onChange={onProductCountChange}>
-              <ProductImage className="custom-image" />
-              <ProductTitle className="text-white" />
-              <ProductButtons className="custom-button" style={{ display: "flex", justifyContent: "center" }} />
-            </ProductCard>
-          }
-        })} */}
-      </div>
+        </>)}
 
-      <code>{JSON.stringify(shoppingCart)}</code>
+      </ProductCard>
+
     </div>
   )
 }
