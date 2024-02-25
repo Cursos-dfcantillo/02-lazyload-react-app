@@ -7,7 +7,7 @@ import {
   } from 'react-router-dom';
   
   import logo from '../logo.svg';
-import { LazyPage1,LazyPage2,LazyPage3 } from '../01-lazyload/pages';
+import { RegisterPage,FormikBasicPage ,FormikYupPage,FormikComponent,FormikAbstraction} from '../03-forms/pages';
   
   export const Navigation = () => {
     return (
@@ -17,14 +17,22 @@ import { LazyPage1,LazyPage2,LazyPage3 } from '../01-lazyload/pages';
               <img src={ logo } alt="React Logo" />
             <ul>
               <li>
-                <NavLink to="/lazy1" className="nav-active" >Lazy 1</NavLink>
+                <NavLink to="/register" className="nav-active" >Register Pages</NavLink>
               </li>
               <li>
-                <NavLink to="/lazy2" className="nav-active" >Lazy 2</NavLink>
+                <NavLink to="/formik-basic" className="nav-active" >Formik Basic</NavLink>
               </li>
               <li>
-                <NavLink to="/lazy3" className="nav-active" >Lazy 3</NavLink>
+                <NavLink to="/formik-yup" className="nav-active" >Formik Yup</NavLink>
               </li>
+              <li>
+                <NavLink to="/formik-component" className="nav-active" >Formik Components</NavLink>
+              </li>
+              <li>
+                <NavLink to="/formik-abstraction" className="nav-active" >Formik Abstraction</NavLink>
+              </li>
+
+
             </ul>
           </nav>
   
@@ -46,10 +54,12 @@ import { LazyPage1,LazyPage2,LazyPage3 } from '../01-lazyload/pages';
             </Route>
           </Switch> */}
           <Routes>
-            <Route path='/lazy1' element={<LazyPage1/>} />
-            <Route path='/lazy2' element={<LazyPage2/>} />
-            <Route path='/lazy3' element={<LazyPage3/>} />
-
+            <Route path='/lazy1' element={<RegisterPage/>} />
+            <Route path='/formik-basic' element={<FormikBasicPage/>} />
+            <Route path='/formik-yup' element={<FormikYupPage/>} />
+            <Route path='/formik-component' element={<FormikComponent/>} />
+            <Route path='/formik-abstraction' element={<FormikAbstraction/>} />
+            
             <Route path='/*' element={<Navigate to="/lazy1" replace/>} />
 
           
