@@ -1,0 +1,42 @@
+[{
+    "type": "input",
+    "name": "firstName",
+    "placeholder": "Diego",
+    "label": "First Name",
+    "value": "",
+    "validations": [
+        { "type": "required" },
+        { "type": "min", "minValue": 3 }
+    ]
+
+}, {
+    "type": "input",
+    "name": "lastName",
+    "placeholder": "Cantillo",
+    "label": "Last Name",
+    "value": "",
+    "validations": [
+        { "type": "required" },
+        { "type": "min", "minValue": 3 }
+    ]
+}, {
+    "type": "email",
+    "name": "email",
+    "placeholder": "test@example.com",
+    "label": "Email",
+    "value": "",
+    "validations": [
+        { "type": "required" },
+        { "type": "email" }
+    ]
+}, {
+    "type": "select",
+    "name": "jobType",
+    "label": "Job Type",
+    "value": "",
+    "options": [
+        { "label": "Developers", "id": "developers" },
+        { "label": "Testing", "id": "testing" }
+
+    ]
+}]

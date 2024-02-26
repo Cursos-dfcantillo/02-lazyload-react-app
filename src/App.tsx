@@ -1,4 +1,4 @@
-import './App.css'
+// import './App.css'
 import { Navigation } from './routes/Navigation'
 
 function App() {
